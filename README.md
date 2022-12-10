@@ -10,5 +10,9 @@ Fill application.properties :
 - proxy.isEnabled : Set to true if a proxy is needed to access the internet
 - proxy.url : Proxy's url, only needed if proxy.isEnabled is set to true
 
+```
 npm install
+```
+```
 node bin/index.js
+```
