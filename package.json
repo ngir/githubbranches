@@ -1,0 +1,19 @@
+{
+  "name": "githubbranches",
+  "version": "1.0.0",
+  "description": "Tool to retrieves branches with a given name inside a GitHub organization",
+  "main": "bin/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "bin": {
+    "hello": "./bin/index.js"
+  },
+  "dependencies": {
+    "btoa": "^1.2.1",
+    "properties-reader": "^2.2.0",
+    "request": "^2.88.2"
+  }
+}
