@@ -46,7 +46,7 @@ async function loadRepositories() {
         }
 
     } while(moreRepositories);
-    console.log(allRepositories.length + " repos found");
+    console.log(allRepositories.length + " repositories found");
     return allRepositories;
 } 
 
