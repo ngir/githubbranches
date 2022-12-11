@@ -1,5 +1,5 @@
 ## githubbranches
-Tool to retrieves branches with a given name inside a GitHub organization
+Tool to retrieve branches with a given name inside a GitHub organization
 
 ## How to use
 Fill application.properties :
