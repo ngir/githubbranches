@@ -12,9 +12,10 @@ const gitOrg = getProperty('git.organization');
 const gitUser = getProperty('git.user');
 const gitToken = getProperty('git.token');
 const gitBranch = getProperty('git.branch');
+const useProxy = getProperty('proxy.isEnabled');
+const proxyUrl = getProperty('proxy.url');
 
 const gitHubBaseUrl = 'https://api.github.com';
-
 const authorizationToken = 'Basic ' + btoa(gitUser + ':' + gitToken);
 
 main();
@@ -22,9 +23,9 @@ main();
 async function main() {
     console.log("Getting all repositories from github organization : " + gitOrg);
     let allRepositories = await loadRepositories();
-    console.log("Reading all repos to get matching branches : " + gitBranch);
+    console.log("Reading all repositories to get matching branches : " + gitBranch);
     let matchingRepositories = await browseRepositoriesBranches(allRepositories);
-    console.log(matchingRepositories.length + " repos with " + gitBranch + " branch found :");
+    console.log(matchingRepositories.length + " repositories with " + gitBranch + " branch found :");
     console.log(matchingRepositories);
 }
 
@@ -73,7 +74,7 @@ async function browseRepositoriesBranches(allRepositories) {
 /**
  * Send the http call, add proxy if the property proxy.isEnabled is set to true
  * @param {*} url Url to call
- * @returns Promise with the parse JSON response
+ * @returns Promise with the parsed JSON response
  */
 async function makeHttpCall(url) {
     var options = {
@@ -84,8 +85,8 @@ async function makeHttpCall(url) {
             'Authorization': authorizationToken
         }
     };
-    if (getProperty('proxy.isEnabled') === true) {
-        options.proxy = getProperty('proxy.url')
+    if (useProxy === true) {
+        options.proxy = proxyUrl;
     }
 
     return new Promise((resolve, reject) => {
